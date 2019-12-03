@@ -20,6 +20,9 @@ def extracao(request):
         res = BeautifulSoup(html.read(),"html5lib")
         tags =res.find_all('div')[0].getText()
         print(tags)
-        return HttpResponse(tags)
+        separar = tags.split()
+        print(separar)
+        return render(request,'polls/extracao.html',{'dados':separar})
     else:
         return render(request,'polls/link.html')
+        
